@@ -6,9 +6,11 @@ function getBirds() {
   return result;
 }
 
-function updateObserver(id, observername) {
-  birds.find((el) => el.id === id).observer.push(observername);
-  birds.find((el) => el.id === id).count += 1;
+function updateObserver(id, newObserver) {
+  birds.find((el) => el.id == id).observer.push(newObserver.newObserver);
+  birds.find((el) => el.id == id).count += 1;
+  console.log(`Observed by ${newObserver.newObserver}`);
+  return birds;
 }
 
 module.exports = { getBirds, updateObserver };

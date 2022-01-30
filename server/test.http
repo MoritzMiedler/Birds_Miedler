@@ -1,6 +1,15 @@
-PATCH http://127.0.0.1/birds/1
+PATCH http://127.0.0.1:3000/birds/1
 content-type: application/json
 
 {
     "newObserver": "Moritz Miedler"
 }
+###
+PATCH http://127.0.0.1:3000/birds/1
+content-type: application/json
+
+{
+    "newObserver": "Deine Mutter"
+}
+###
+GET http://127.0.0.1:3000/birds
