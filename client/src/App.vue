@@ -29,11 +29,12 @@ export default {
       this.birds = result.data;
     },
     async seenBird(birdDATA) {
+      console.log(birdDATA.observedBy);
       await axios({
         url: `http://localhost:3000/birds/${birdDATA.bird.id}`,
         method: 'PATCH',
         contentType: 'application/json',
-        data: { birdDATA },
+        data: { newObserver: birdDATA.observedBy },
       });
     },
   },

@@ -2,8 +2,8 @@
   <div>
     <span class="font-weight-bold">Our Endangered Birds</span>
     <br />
-    <v-col cols="3"><v-text-field v-model="firstname" label="Vorname"></v-text-field></v-col>
-    <v-col cols="3"><v-text-field v-model="lastname" label="Nachname"></v-text-field></v-col>
+    <v-col cols="3"><v-text-field v-model="firstName" label="Vorname"></v-text-field></v-col>
+    <v-col cols="3"><v-text-field v-model="lastName" label="Nachname"></v-text-field></v-col>
     <v-col> <WatchedBirdname v-if="lastSeen" :lastSeen="lastSeen"></WatchedBirdname></v-col>
     <br />
     <span class="font-italic">
@@ -46,12 +46,14 @@ export default {
         { text: 'Actions', align: 'start', sortable: false, value: 'actions' },
       ],
       lastSeen: '',
+      firstName: 'Bobert',
+      lastName: 'Raumgartner',
     };
   },
   methods: {
     seenBird(bird) {
       this.lastSeen = bird;
-      return this.$emit('seen', { bird, observedBy: `${this.firstname} ${this.lastname}` });
+      return this.$emit('seen', { bird, observedBy: `${this.firstName} ${this.lastName}` });
     },
   },
   components: {
