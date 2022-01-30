@@ -9,7 +9,7 @@
       <v-btn color="primary" to="/about" class="mx-2">ABOUT</v-btn>
     </v-app-bar>
     <v-main>
-      <v-container> <router-view :birds="birds" /></v-container>
+      <v-container> <router-view :birds="birds" @seen="seenBird" /></v-container>
     </v-main>
   </v-app>
 </template>
@@ -27,6 +27,14 @@ export default {
     async getBirds() {
       const result = await axios({ url: 'http://localhost:3000/birds', method: 'GET' });
       this.birds = result.data;
+    },
+    async seenBird(birdDATA) {
+      await axios({
+        url: `http://localhost:3000/birds/${birdDATA.bird.id}`,
+        method: 'PATCH',
+        contentType: 'application/json',
+        data: { birdDATA },
+      });
     },
   },
   created() {
